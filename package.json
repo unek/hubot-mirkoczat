@@ -1,0 +1,18 @@
+{
+  "name": "hubot-mirkoczat",
+  "version": "1.0.0",
+  "author": "unek <unekpl@gmail.com>",
+  "description": "mirkoczat.pl adapter for hubot",
+  "keywords": "hubot mirkoczat wykop mirkochat",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/unek/hubot-mirkoczat.git"
+  },
+  "main": "index.coffee",
+  "dependencies": {
+    "phoenix-js": "^1.0.3",
+    "websocket": "^1.0.23"
+  }
+}
+
