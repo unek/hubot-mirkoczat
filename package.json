@@ -1,6 +1,6 @@
 {
   "name": "hubot-mirkoczat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "unek <unekpl@gmail.com>",
   "description": "mirkoczat.pl adapter for hubot",
   "keywords": "hubot mirkoczat wykop mirkochat",
