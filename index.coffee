@@ -53,7 +53,8 @@ class MirkoczatBot extends Adapter
             self.socket.connect()
 
             # open the channel
-            self.chan = self.socket.channel 'rooms:' + options.channel, {}
+            if not err
+                self.chan = self.socket.channel 'rooms:' + options.channel, {}
             # and join it
             self.chan.join()
 
@@ -87,19 +88,23 @@ class MirkoczatBot extends Adapter
         # enter messages
         @chan.on 'info:enter', (msg) ->
             user = self.robot.brain.userForName(msg.user) or new User(msg.user)
-            user.room = msg.room
+            user.room = options.channel
             self.receive new EnterMessage user
 
         # leave messages
         @chan.on 'info:leave', (msg) ->
             user = self.robot.brain.userForName(msg.user) or new User(msg.user)
-            user.room = msg.room
+            user.room = options.channel
             self.receive new LeaveMessage user
 
         # text messages
         @chan.on 'msg:send', (msg) ->
+            # ignore own messages
+            if msg.user is self.robot.name
+                return
+    
             user = self.robot.brain.userForName(msg.user) or new User(msg.user)
-            user.room = msg.room
+            user.room = options.channel
             message = new TextMessage user, msg.body, msg.uid
             self.receive message
 
